@@ -1,0 +1,34 @@
+{
+  "name": "cafehunt",
+  "version": "1.0.0",
+  "description": "Discover Mexico's Best Cafés - A mobile-first PWA for finding highly-rated coffee shops",
+  "main": "worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:staging": "npm run build && wrangler deploy --env staging",
+    "build": "mkdir -p public && cp cafehunt.html public/index.html",
+    "kv:create": "wrangler kv:namespace create CAFEHUNT_CACHE && wrangler kv:namespace create CAFEHUNT_CACHE --preview",
+    "secret:set": "wrangler secret put GOOGLE_PLACES_API_KEY",
+    "tail": "wrangler tail",
+    "clean": "rm -rf public"
+  },
+  "keywords": [
+    "cafe",
+    "coffee",
+    "mexico",
+    "pwa",
+    "maps",
+    "mobile",
+    "cloudflare-workers"
+  ],
+  "author": "askgato.com",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,33 @@
+name = "cafehunt"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Custom domain configuration
+routes = [
+  { pattern = "cafehunt.app/*", zone_name = "cafehunt.app" }
+]
+
+# KV namespace for caching
+kv_namespaces = [
+  { binding = "CAFEHUNT_CACHE", id = "your_kv_namespace_id_here", preview_id = "your_preview_kv_namespace_id_here" }
+]
+
+# Environment variables (don't commit the actual API key!)
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
+
+# Workers site configuration to serve static files
+[site]
+bucket = "./public"
+
+# Build configuration
+[build]
+command = ""
+watch_dirs = []
+
+# Limits
+compatibility_flags = []
+workers_dev = true
